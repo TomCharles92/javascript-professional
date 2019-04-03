@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Stringify Example</title>
+</head>
+<body>
+    <p>This example serializes an object and passes in a filter array.</p>
+    <script type="text/javascript">
+        var book = {
+                        title: "Professional JavaScript",
+                        authors: [
+                            "Nicholas C. Zakas"
+                        ],
+                        edition: 3,
+                        year: 2011,
+                        hello: undefined,
+                        function01: function () {
+                            console.log(223);
+                        }
+                   };
+
+        var jsonText =
+            JSON.stringify(book, ["title", "edition", "hello", "function01"]);  //第二个参数是一个过滤器，只显示需要的属性
+        document.write(jsonText);   //{"title":"Professional JavaScript","edition":3}
+                                    //值为undefined的任何属性，以及函数都会被忽略
+                                    //默认情况下，不保留缩进
+
+    </script>
+</body>
+</html>

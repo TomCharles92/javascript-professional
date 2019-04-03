@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html id="ahtml">
+<head>
+    <title>Text Node Example</title>
+</head>
+<body>
+    <div id="myDiv">Hello world!</div>
+
+    <input type="button" value="Change Text" onclick="changeText()">
+
+    <script type="text/javascript">
+        function changeText(){
+            var div = document.getElementById("myDiv");
+            div.firstChild.nodeValue = "Some other message";
+            console.log(div.childNodes);
+        }
+
+        var ahtml = document.getElementById('ahtml');
+        console.log(ahtml.childNodes);  // 一个包含head、text、body的NodeList
+
+        var secondChild = ahtml.childNodes[1];
+        console.log(secondChild);                   //  第二个节点
+        console.log(secondChild.previousSibling);   //  前一个同胞
+        console.log(secondChild.nextSibling);       //  后一个同胞
+        console.log(secondChild.ownerDocument);     //  文档顶端，这里是#document
+
+    </script>
+</body>
+</html>

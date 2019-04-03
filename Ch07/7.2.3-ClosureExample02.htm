@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Closure Example 2</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        
+            function createFunctions(){
+                var result = new Array();
+                
+                for (var i=0; i < 10; i++){
+                    result[i] = function(num){  // 参数是按值传递的
+                        return function(){
+                            return num;
+                        };
+                    }(i);   //  参数在这被传入
+                }
+                
+                return result;
+            }
+            
+            var funcs = createFunctions();
+
+            console.log(funcs)  // 10个函数的数组
+            
+            //every function outputs 10
+            for (var i=0; i < funcs.length; i++){
+                document.write(funcs[i]() + "<br />");  // 这里的i只是表示，是数组中的第几个函数
+            }
+
+        </script>
+     
+    </body>
+</html>

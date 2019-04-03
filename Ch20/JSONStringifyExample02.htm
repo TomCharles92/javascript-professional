@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Stringify Example</title>
+</head>
+<body>
+    <p>This example serializes an object and passes in a filter function.</p>
+    <script type="text/javascript">
+        var book = {
+                        title: "Professional JavaScript",
+                        authors: [
+                            "Nicholas C. Zakas"
+                        ],
+                        edition: 3,
+                        year: 2011
+                   };
+
+        var jsonText = JSON.stringify(book, function(key, value){  //第二个参数也可以是一个函数
+            switch(key){
+                case "authors":
+                    return value.join(",")  //将数组拼接成字符串
+                 
+                case "year":
+                    return 5000;
+                    
+                case "edition":
+                    return undefined;   //该属性将不会显示
+                    
+                default:
+                    return value;
+            }
+        });
+        document.write(jsonText);   //{"title":"Professional JavaScript","authors":"Nicholas C. Zakas","year":5000}
+
+    </script>
+</body>
+</html>

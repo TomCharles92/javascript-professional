@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Stringify Example</title>
+</head>
+<body>
+    <p>This example serializes an object and passes in a filter function.</p>
+    <script type="text/javascript">
+        var book = {
+                       "title": "Professional JavaScript",
+                        "authors": [
+                            "Nicholas C. Zakas"
+                        ],
+                        edition: 3,
+                        year: 2011
+                   };
+
+        var jsonText = JSON.stringify(book, null, "--");    //使用字符串时，将缩进字符替换成字符串。最多显示10个字符。
+        console.log(jsonText);
+        /*{
+            --"title": "Professional JavaScript",
+            --"authors": [
+            ----"Nicholas C. Zakas"
+            --],
+            --"edition": 3,
+            --"year": 2011
+        }*/
+    </script>
+</body>
+</html>

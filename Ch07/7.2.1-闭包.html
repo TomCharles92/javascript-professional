@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function createComparisonFunction (propertyName) {
+        return function (object1, object2) {
+            var value1 = object1[propertyName];
+            var value2 = object2[propertyName];
+            if (value1 < value2) {
+                return -1;
+            } else if (value1 > value2) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+    }
+
+    var compareNames = createComparisonFunction('name');    // 这里返回了一个匿名函数
+    console.log(createComparisonFunction)       // createComparisonFunction 函数
+    console.log(compareNames)                   // createComparisonFunction 返回的那个匿名函数
+
+    var result = compareNames({name: 2}, {name: 4});
+    console.log(result);    // -1
+    compareNames = null;    // 解除对匿名函数的使用，以便释放内存
+
+</script>
+
+</body>
+</html>

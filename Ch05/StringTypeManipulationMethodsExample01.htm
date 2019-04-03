@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type Manipulation Methods Example</title>
+    <script type="text/javascript">
+    
+        var stringValue = "hello world";
+        alert(stringValue.slice(3));        //"lo world"
+        alert(stringValue.substring(3));    //"lo world"
+        alert(stringValue.substr(3));       //"lo world" 第一个参数都表示起始位置
+        alert(stringValue.slice(3, 7));     //"lo w" 第二个表示结束位置
+        alert(stringValue.substring(3,7));  //"lo w" 第二个表示结束位置
+        alert(stringValue.substr(3, 7));    //"lo worl" 第二个表示字符个数
+        
+        alert(stringValue.slice(-3));         //"rld" -3+length=8
+        alert(stringValue.substring(-3));     //"hello world" 将负值转成0，相当于substring(0)
+        alert(stringValue.substr(-3));        //"rld" -3+length=8
+        alert(stringValue.slice(3, -4));      //"lo w" slice(3,7)
+        alert(stringValue.substring(3, -4));  //"hel" 相当于substring(3, 0)
+        alert(stringValue.substr(3, -4));     //"" 第二个参数将负值转成0，substr(3, 0)
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

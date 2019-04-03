@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Switch Statement Example 2</title>
+    <script type="text/javascript">
+        var i = 25;
+        switch (i) {
+            case 25:   //break会导致代码执行流跳出当前switch
+                /* falls through */  //忽略break会，则会继续执行下一个case
+            case 35: 
+                alert("25 or 35");
+                break;
+            case 45: 
+                alert("45");
+                break;
+            default:   //default相当于else
+                alert("Other");
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

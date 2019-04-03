@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.1.1属性类型-数据属性</title>
+</head>
+<body>
+
+<h1><a href="https://www.cnblogs.com/absolute-child/p/7188417.html">参考网站：Js中的数据属性和访问器属性</a></h1>
+
+<script>
+    "use strict"
+
+    var person = {
+        name: 'zhat',
+        cell: 12345
+    }
+
+    // 数据属性是对象属性的默认值
+    console.log('对象person的property name的默认数据attribute', Object.getOwnPropertyDescriptor(person, 'name'))
+
+    console.log('==================测试数据属性修改前后')
+    person.name = 'modifyValue';
+    console.log('writable===true: ' + person.name)
+
+    for (let prop in person) {
+        console.log('enumerable===true: ' + prop)
+    }
+
+    delete person.name;
+    console.log('delete后：' + person.name)
+
+    // name被删除了，重新赋值
+    person.name = 'xiaomin';
+    // configurable: false 设置之后：
+    // 1. 不能用delete删除property了
+    // 2. 不能将数据属性修改为访问器属性了
+    // 3. property的4个attribute不能被修改了，除了将writable的true改为false
+    Object.defineProperty(person, 'name', {
+        configurable: false
+    })
+    console.log('将configurable设置为false：', Object.getOwnPropertyDescriptor(person, 'name'))
+
+    Object.defineProperty(person, 'name', {
+        writable: false
+    })
+    console.log('将writable true => false 成功：', Object.getOwnPropertyDescriptor(person, 'name'))
+
+    try {
+        Object.defineProperty(person, 'name', {
+            writable: true
+        })
+    } catch (error) {
+        console.log('当configurable: false，在严格模式下修改属性的attribute会抛出异常', error)
+    }
+    console.log('修改writable失败', Object.getOwnPropertyDescriptor(person, 'name'))
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Function Type Arguments Caller Example</title>
+    <script type="text/javascript">
+
+        // this, caller, callee
+        function outer(){
+            inner();
+            console.log('outer的' + this);   // window
+        }
+
+        console.log(inner);     // 完成的函数inner
+        function inner(){
+            console.log(arguments.callee);  // 完成的函数inner，严格模式下该属性无法访问
+            console.log(inner.caller);      // 完成的函数outer
+            console.log('inner的' + this);   // window
+        }
+
+        outer();
+
+
+
+        // function one () {
+        //     console.log(this);
+        //     return function () {
+        //         console.log(this);
+        //     }
+        // }
+        // console.log(one());
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

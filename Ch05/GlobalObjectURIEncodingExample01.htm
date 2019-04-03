@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Global Object URI Encoding Example</title>
+    <script type="text/javascript">
+    
+        var uri = "http://www.wrox.com/illegal value.htm#start";
+        //"http://www.wrox.com/illegal%20value.htm#start"  只对空格等非URI字符进行编码
+        alert(encodeURI(uri));
+        //"http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start"  对所有非标准字符进行编码
+        alert(encodeURIComponent(uri));
+
+        alert(decodeURIComponent(encodeURI(uri)));
+
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

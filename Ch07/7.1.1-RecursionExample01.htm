@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recursion Example</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        
+            function factorial(num){
+                if (num <= 1){
+                    return 1;
+                } else {
+                    return num * factorial(num-1);
+                }
+            }
+
+            var anotherFactorial = factorial;
+            factorial = null;
+            alert(anotherFactorial(4));  //error!  因为函数内用到了 factorial，所以要切断函数体与函数名的耦合
+
+
+        </script>
+     
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Function Arguments Example 2</title>
+    <script type="text/javascript">
+        function setProductName (product) {
+            product.name = 'Product02'
+        }
+        var product = { name: 'Product01' }
+        setProductName(product)
+        console.log('示例一：' + product.name)
+
+        function setName(obj) {
+            obj.name = "Nicholas";  //参数传递的值是地址，所以obj和person引用同一个对象
+            obj = { name: 'zhat' };  //这是obj引用的是一个局部变量，function结束就销毁
+        }
+        var person = {};
+        setName(person);
+        console.log('示例二：' + person.name);    //"Nicholas"
+
+        var obj01 = { name: 223 };
+        var obj02 = obj01;
+        console.log(obj02.name)
+        obj02 = { name: 666 }
+        console.log('结果同示例二：' + obj01.name)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
