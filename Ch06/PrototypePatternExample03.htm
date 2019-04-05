@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Prototype Pattern Example 3</title>
     <script type="text/javascript">
     
@@ -18,8 +19,8 @@
         var person2 = new Person();
         
         person1.name = "Greg";
-        alert(person1.name);   //"Greg" – from instance
-        alert(person2.name);   //"Nicholas" – from prototype
+        alert(person1.name);   //"Greg" ï¿½ from instance
+        alert(person2.name);   //"Nicholas" ï¿½ from prototype
         
         delete person1.name;
         alert(person1.name);   //"Nicholas" - from the prototype

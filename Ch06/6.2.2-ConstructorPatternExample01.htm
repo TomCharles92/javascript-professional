@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Constructor Pattern Example</title>
     <script type="text/javascript">
 
@@ -19,15 +20,11 @@
         person1.sayName();   //"Nicholas"
         person2.sayName();   //"Greg"
 
-        console.log("person1是Object的实例：", person1 instanceof Object);  //true
-        console.log("person1是Person的实例：", person1 instanceof Person);  //true
-        console.log("person2是Object的实例：", person2 instanceof Object);  //true
-        console.log("person2是Person的实例：", person2 instanceof Person);  //true
+        console.log("person1是Person，也是Object的实例：", person1 instanceof Person, person1 instanceof Object);  //true
 
-        console.log("person1的构造函数是Person：", person1.constructor == Person);  //true
-        console.log("person2的构造函数是Person：", person2.constructor == Person);  //true
+        console.log("person1的构造函数是Person：", person1.constructor === Person);  //true
 
-        console.log("person1和person2的sayName方法引用的不是同一个对象", person1.sayName == person2.sayName);  //false
+        console.log("person1和person2的sayName方法引用的不是同一个对象", person1.sayName === person2.sayName);  //false
 
         console.log(person1, person2)
 

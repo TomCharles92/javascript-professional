@@ -13,8 +13,11 @@
             age : 29,
             job : "Software Engineer",
             friends : ["Shelby", "Court"],
+            myObj: {
+                aaa: 223
+            },
             sayName : function () {
-                alert(this.name);
+                console.log(this.name);
             }
         };
         
@@ -23,9 +26,12 @@
         
         person1.friends.push("Van");
         
-        alert(person1.friends);    //"Shelby,Court,Van"
-        alert(person2.friends);    //"Shelby,Court,Van"
-        alert(person1.friends === person2.friends);  //true
+        console.log(person1.friends);    //"Shelby,Court,Van"
+        console.log(person2.friends);    //"Shelby,Court,Van"
+        console.log(person1.friends === person2.friends);  //true
+        
+        person1.myObj.aaa = 456;
+        console.log(person2.myObj.aaa)
 
         
     </script>

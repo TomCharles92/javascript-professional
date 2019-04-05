@@ -11,6 +11,7 @@
             
             //add the values
             values.push.apply(values, arguments);
+            // values.push(arguments);
             
             //assign the method
             values.toPipedString = function(){
@@ -22,9 +23,11 @@
         }
         
         var colors = new SpecialArray("red", "blue", "green");
-        alert(colors.toPipedString()); //"red|blue|green"
+        console.log(colors.toPipedString()); //"red|blue|green"
 
-        alert(colors instanceof SpecialArray);
+        console.log(colors instanceof SpecialArray);
+        
+        console.log(colors)
 
         
     </script>
