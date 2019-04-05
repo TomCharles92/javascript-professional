@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  function Person() {
+    Person.prototype = {
+      constructor: Person,
+      sayName: function() {
+        alert(this.name);
+      }
+    }
+    // Person.prototype.sayName = function() {
+    //   alert(this.name);
+    // }
+  }
+  
+  var person1 = new Person();
+  var person2 = new Person();
+  console.log(person1)
+  console.log(person2)
+  console.log(Object.getPrototypeOf(person1) === Object.getPrototypeOf(person2))
+</script>
+
+</body>
+</html>
