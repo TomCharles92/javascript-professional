@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>6.3.1原型链 - 3.谨慎地定义方法</title>
+    <script type="text/javascript">
+                            
+        function SuperType(){
+            this.property = true;
+        }
+        
+        SuperType.prototype.getSuperValue = function(){
+            return this.property;
+        };
+        
+        function SubType(){
+            this.subproperty = false;
+        }
+
+        //new method
+        // 当我们先给子原型定义方法，再替换原型，之前定义的方法无法保留。
+        SubType.prototype.getSubValue = function (){
+            return this.subproperty;
+        };
+        
+        //inherit from SuperType
+        SubType.prototype = new SuperType();
+        
+        
+        //override existing method
+        SubType.prototype.getSuperValue = function (){
+            return false;
+        };
+        
+        var instance = new SubType();
+        console.log(instance.getSuperValue());   //false
+        
+        console.log("子实例", instance);
+        console.log("父实例", new SuperType());
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

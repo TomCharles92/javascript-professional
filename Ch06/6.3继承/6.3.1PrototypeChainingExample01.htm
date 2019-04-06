@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype Chaining Example</title>
+    <script type="text/javascript">
+                    
+        function SuperType(){
+            this.superProperty = true;
+        }
+        
+        SuperType.prototype.getSuperValue = function(){
+            return this.superProperty;
+        };
+        
+        function SubType(){
+            this.subproperty = false;
+        }
+        
+        //inherit from SuperType
+        SubType.prototype = new SuperType();
+        
+        SubType.prototype.getSubValue = function (){
+            return this.subproperty;
+        };
+        
+        var subInstance = new SubType();
+        console.log(subInstance.getSuperValue());   //true
+       
+        console.log("以下6个Boolean值都是用来确定原型与实例的关系的")
+        console.log(subInstance instanceof Object);      //true
+        console.log(subInstance instanceof SuperType);   //true
+        console.log(subInstance instanceof SubType);     //true
+
+        console.log(Object.prototype.isPrototypeOf(subInstance));    //true
+        console.log(SuperType.prototype.isPrototypeOf(subInstance)); //true
+        console.log(SubType.prototype.isPrototypeOf(subInstance));   //true
+        
+        console.log("子实例：", subInstance)
+        
+        console.log("父实例：", new SuperType())
+        
+        console.log(Object.getPrototypeOf(subInstance) instanceof SuperType)
+        
+        for (item in subInstance) {
+            console.log(item)
+        }
+        
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>
