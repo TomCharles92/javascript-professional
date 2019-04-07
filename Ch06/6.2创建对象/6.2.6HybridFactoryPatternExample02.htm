@@ -10,8 +10,11 @@
             var values = new Array();
             
             //add the values
-            values.push.apply(values, arguments);
-            // values.push(arguments);
+            // values.push.apply(values, arguments);
+            
+            for (var item in arguments) {
+                values.push(arguments[item])
+            }
             
             //assign the method
             values.toPipedString = function(){
