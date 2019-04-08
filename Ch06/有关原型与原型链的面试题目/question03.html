@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    var F = function () {
+    };
+    Object.prototype.a = function () {
+      console.log('方法a');
+    };
+    Function.prototype.b = function () {
+      console.log('方法b');
+    };
+
+    var f = new F();
+    console.log(f.a(), f.b());
+    console.log(F.a(), F.b());
+  //  它们的值是什么，为什么？
+  
+  //  分析
+    console.log(f instanceof Function);
+    console.log(F instanceof Function);
+  </script>
+</head>
+<body>
+<a href="https://www.cnblogs.com/wjyz/p/10219106.html" target="_blank">问题连接</a>
+
+</body>
+</html>

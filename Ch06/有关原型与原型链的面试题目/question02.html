@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    function C1(name){
+
+      if(name) this.name=name;
+
+    }
+
+    function C2(name){
+
+      this.name=name;
+
+    }
+
+    function C3(name){
+
+      this.name=name||'john';
+
+    }
+
+    //
+
+    C1.prototype.name="Tom";
+
+    C2.prototype.name="Tom";
+
+    C3.prototype.name="Tom";
+
+    // 判断答案是什么
+    console.log((new C1().name));
+    console.log((new C2().name));
+    console.log((new C3().name));
+  </script>
+</head>
+<body>
+
+<a href="https://www.imooc.com/wenda/detail/402830" target="_blank">问题地址</a>
+
+</body>
+</html>
