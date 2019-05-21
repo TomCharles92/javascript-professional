@@ -8,6 +8,17 @@
 <!-- outputs "click" -->
 <input type="button" value="Click Me" onclick="alert(event.type)">
 
+<input type="button" value="Click Me" onclick="message(event)">
+
+<input type="button" value="Click Me" onclick="console.log(arguments.callee, getElementsByTagName('body'))">
+
 
 </body>
 </html>
+<script>
+function message(event) {
+    console.log(event);
+    console.log(this);
+    console.log(arguments.callee)
+}
+</script>
