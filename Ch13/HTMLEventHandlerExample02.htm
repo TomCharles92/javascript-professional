@@ -6,9 +6,11 @@
 </head>
 <body>
 <!-- outputs "click" -->
-<input type="button" value="Click Me" onclick="alert(event.type)">
-
-<input type="button" value="Click Me" onclick="message(event)">
+<form name="myForm">
+    <input type="button" value="Click Me" onclick="console.log(`当前form的name：`, nameA , '当前元素：', this, '当前事件', event, event.eventPhase)">
+    <input type="button" name="nameA" value="zhatao">
+    <input type="button" value="Click Me" onclick="message(event, this)">
+</form>
 
 <input type="button" value="Click Me" onclick="console.log(arguments.callee, getElementsByTagName('body'))">
 
@@ -16,9 +18,10 @@
 </body>
 </html>
 <script>
-function message(event) {
+function message(event, that) {
     console.log(event);
     console.log(this);
+    console.log(this.value, that.value);
     console.log(arguments.callee)
 }
 </script>

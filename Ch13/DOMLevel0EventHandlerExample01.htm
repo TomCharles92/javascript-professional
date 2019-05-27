@@ -8,8 +8,8 @@
     <input type="button" id="myRemoveBtn" value="Remove Event Handler" />
     <script type="text/javascript">
         var btn = document.getElementById("myBtn");
-        btn.onclick = function(){
-            alert(this.id);
+        btn.onclick = function(event){
+            alert(event.eventPhase);
         };
         
         var removeBtn = document.getElementById("myRemoveBtn");
