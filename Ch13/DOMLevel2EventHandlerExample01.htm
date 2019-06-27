@@ -11,8 +11,8 @@
         btn.addEventListener("click", function(){
             alert(this.id);
         }, false);
-        btn.addEventListener("click", function(){
-            alert("Hello world!");
+        btn.addEventListener("click", function(event){
+            alert(event.eventPhase);
         }, false);
 
     </script>
