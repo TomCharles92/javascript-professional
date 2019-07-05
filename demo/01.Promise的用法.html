@@ -1,0 +1,112 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Promise</title>
+</head>
+
+<body>
+    <a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023024413276544">参考地址</a>
+</body>
+
+<script>
+    // 一、对 Promise 执行的拆解
+    // then(onFulfilled, onRejected) then 可以接受2个回调函数，对应 resolve 和 reject
+    // 当使用第二回调函数时，catch 函数无法生效
+
+    function test(resolve, reject) {
+        var timeOut = Math.random() * 2;
+        console.log('set timeout to: ' + timeOut + ' seconds.');
+        setTimeout(function () {
+            if (timeOut < 1) {
+                console.log('call resolve()...');
+                resolve('200 OK');
+            }
+            else {
+                console.log('call reject()...');
+                reject('timeout in ' + timeOut + ' seconds.');
+            }
+        }, timeOut * 1000);
+    }
+
+    var p1 = new Promise(test);
+    var p2 = p1.then(function (result) {
+        console.log(p1);
+        console.log('成功：' + result);
+        return 223
+    }, function (result) {
+        console.log('失败：' + result)
+        return 456
+    })
+        .catch(function (reason) {
+            console.log('失败：' + reason);
+        })
+
+    setTimeout(function () {
+        console.log(p2)
+    }, 2000)
+
+    // var p3 = p2.catch(function (reason) {
+    //     console.log(p1);
+    //     console.log(p2)
+    //     console.log('失败：' + reason);
+    // });
+
+    // new Promise(test)
+    //     .then(function (result) {
+    //         console.log('成功：' + result);
+    //     })
+    //     .catch(function (reason) {
+    //         console.log('失败：' + reason);
+    //     })
+
+    // 二、二者合一，Promise 的完整形态
+
+    // new Promise(function (resolve, reject) {
+    //     var timeOut = Math.random() * 2;
+    //     console.log('set timeout to: ' + timeOut + ' seconds.');
+    //     setTimeout(function () {
+    //         if (timeOut < 1) {
+    //             console.log('call resolve()...');
+    //             resolve('200 OK');
+    //         }
+    //         else {
+    //             console.log('call reject()...');
+    //             reject('timeout in ' + timeOut + ' seconds.');
+    //         }
+    //     }, timeOut * 1000);
+    // }).then(function (result) {
+    //     console.log('成功：' + result);
+    // }).catch(function (reason) {
+    //     console.log('失败：' + reason);
+    // })
+
+    // function multiply(input) {
+    //     return new Promise(function (resolve, reject) {
+    //         console.log('calculating ' + input + ' x ' + input + '...');
+    //         setTimeout(resolve, 500, input * input);
+    //     });
+    // }
+
+    // 三、Promise 的链式用法
+
+    // new Promise(function (resolve, reject) {
+    //     console.log('start new Promise...');
+    //     resolve(123);
+    // })
+    //     .then(function (input) {
+    //         return new Promise(function (resolve, reject) {
+    //             console.log('calculating ' + input + ' x ' + input + '...');
+    //             setTimeout(resolve, 500, input * input);
+    //         });
+    //     })
+    //     .then(multiply)
+    //     .then(multiply)
+
+    // setTimeout(function(num) {
+    //     console.log(num);
+    // }, 1000, 456)
+</script>
+
+</html>
