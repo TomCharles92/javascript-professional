@@ -28,7 +28,6 @@
 <script>
   watermark({ watermark_txt: "测试水印" })//传入动态水印内容
   function watermark(settings) {
-    console.log(223)
     //默认设置
     var defaultSettings = {
       watermark_txt: "text",
@@ -135,8 +134,6 @@
         oTemp.appendChild(mask_div);
       };
     };
-    console.log(oTemp)
-    console.log(document.body)
     document.body.appendChild(oTemp);
   }
 </script>
