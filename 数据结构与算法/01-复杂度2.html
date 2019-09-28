@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<header>
+  <meta charset="UTF-8">
+</header>
+
+<body>
+  <h1>01-复杂度2 Maximum Subsequence Sum (25 分)</h1>
+</body>
+<script>
+  var maxSubsequence = function (nums) {
+    let max = 0;
+    let tempArray = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+      tempArray += nums[i];
+      
+      // 舍弃子项，max不变
+      if (tempArray < 0) {
+        tempArray = 0;
+      } 
+      // 更新max的值
+      else if (tempArray > max) {
+        max = tempArray;
+
+      }
+    }
+    return max;
+  };
+
+  let param = [-10, 1, 2, 3, 4, -5, -23, 3, 7, -21];
+
+  console.log(maxSubsequence(param))
+
+</script>

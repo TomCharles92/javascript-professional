@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<header>
+  <meta charset="UTF-8">
+</header>
+
+<body>
+  <h1>最大子列和的4种解法</h1>
+</body>
+<script>
+  // 解法1
+  // 时间复杂度：T(N) = O(n^3)
+  var maxSubsequence1 = function (nums) {
+    let i = 0, j = 0, k = 0;
+    let maxSum = 0;
+    let tempSum = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+      for (let j = i + 1; j < nums.length; j++) {
+        tempSum = 0;
+        for (let k = i; k <= j; k++) {
+          tempSum += nums[k];
+          if (tempSum > maxSum) maxSum = tempSum;
+        }
+      }
+    }
+    return maxSum;
+  };
+
+  // 解法2
+  // 时间复杂度：T(N) = O(n^2)
+  var maxSubsequence2 = function (nums) {
+    let i = 0, j = 0;
+    let maxSum = 0;
+    let tempSum = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+      tempSum = 0;
+      for (let j = i; j < nums.length; j++) {
+        tempSum += nums[j];
+        if (tempSum > maxSum) maxSum = tempSum;
+      }
+    }
+    return maxSum;
+  };
+
+  // 解法3：分而治之（分治法）
+  var DivideAndConquer = function(List, left, right) {
+    // 分治法求 List[left] 到 List[right] 的最大子列和
+    // 存放左右子问题的解
+    let MaxLeftSum = 0, MaxRightSum = 0;
+    // 存放跨分界线的结果
+    let MaxLeftBorderSum = 0, MaxRightBorderSum = 0;
+
+    let LeftBorderSum = 0, RightBorderSum = 0;
+    let center = 0, i = 0;
+
+    // 递归的终止条件，子列只有1个元素
+    if(left === right) {
+      if(List[left] > 0) return List[left];
+      else return 0;
+    }
+
+    // 下面是”分“的过程
+    center = Math.floor((left + right)/2); // 取得中分点
+    // 递归求得两边子列的最大和
+    MaxLeftSum = DivideAndConquer(List, left, center);
+    MaxRightSum = DivideAndConquer(List, center + 1, right);
+
+    // 下面求跨分界线的最大子列和
+    // 因为跨界，离不开center这个点
+    // 以center为中点，分别向左、向右，累加。在这个过程中取得最大值
+
+    // 左边扫描
+    MaxLeftBorderSum = 0;
+    LeftBorderSum = 0;
+    for(i = center; i >= left; i--) {
+      LeftBorderSum += List[i];
+      if(LeftBorderSum > MaxLeftBorderSum) MaxLeftBorderSum = LeftBorderSum;
+    }
+
+    // 扫描右边
+    MaxRightBorderSum = 0;
+    RightBorderSum = 0;
+    for(i = center + 1; i <= right; i++) {
+      RightBorderSum += List[i];
+      if(RightBorderSum > MaxRightBorderSum) MaxRightBorderSum = RightBorderSum
+    }
+
+    return Math.max(MaxLeftSum, MaxRightSum, MaxLeftBorderSum + MaxRightBorderSum);
+  }
+
+  var maxSubsequence3 = function(nums) {
+    return DivideAndConquer(nums, 0, nums.length-1);
+  }
+
+  // 10
+  let param = [-10, 1, 2, 3, 4, -5, -23, 3, 7, -21];
+
+  console.log(maxSubsequence3(param))
+
+</script>
