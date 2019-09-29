@@ -1,0 +1,40 @@
+<html>
+  <header>
+    <meta charset="utf-8">
+    <title>1.1.2 打印从1到N的数</title>
+  </header>
+  <body>
+    <h1>1.1.2 打印从1到N的数</h1>
+  </body>
+  
+  <script>
+    // 循环实现
+    function printN1(n) {
+      for(let i=1; i<=n; i++) {
+        console.log(i)
+      }
+    }
+
+    // printN1(100000);
+
+    // 递归实现
+    function printN2(n) {
+      if(n > 0) {
+        printN2(n - 1);
+        console.log(n);
+      }
+    }
+
+    // printN2(100000);
+
+    function timeCalculate() {
+      let start = new Date().getTime();
+      printN1(1000)
+      let end = new Date().getTime();
+      let time = (end - start)/1000;
+      console.log(time)
+    }
+
+    timeCalculate(printN1(1000));
+  </script>
+</html>
