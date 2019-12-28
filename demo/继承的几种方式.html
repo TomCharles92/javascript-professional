@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>面向对象-继承的几种方式</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * 借助构造函数实现继承
+     */
+    console.log("借助构造函数实现继承============================================")
+    function Parent1() {
+      this.name = "parent1";
+    }
+    Parent1.prototype.say = function () {
+      console.log("Parent1 Say Hello!");
+    }
+    function Child1() {
+      Parent1.call(this); // 实现继承的关键
+      this.type = "child1";
+    }
+    console.log(new Child1);
+    // 原理：在子类中调用父类的构造函数，并返回子类实例
+    // 缺点：无法继承父类原型对象上的的属性和方法
+
+    /**
+     * 借助原型链实现继承
+     */
+    console.log("借助原型链实现继承==============================================")
+    function Parent2() {
+      this.name = "parent2";
+    }
+    function Child2() {
+      this.type = "child2";
+    }
+    Child2.prototype = new Parent2(); // 关键
+    console.log(new Child2());
+    // 原理：子类的原型对象 成为 父类的实例
+    // 缺点：父类的属性和方法都通过原型链来继承，对于子类实例来说是共用的
+
+    /**
+     * 组合方式
+     */
+     console.log("组合方式======================================================")
+    function Parent3() {
+      this.name = "parent3";
+    }
+    function Child3() {
+      Parent3.call(this);
+      this.type = "child3";
+    }
+    Child3.prototype = new Parent3(); // 关键
+    console.log(new Child3);
+    // 原理：结合构造函数和原型链，弥补了各自的缺点
+    // 缺点：调用了2次父类的构造函数，来自父类的name属性，既是实例属性，也存在于原型对象上
+
+    /**
+     * 组合继承的优化1
+     */
+     console.log("组合继承的优化1================================================")
+    function Parent4() {
+      this.name = "parent4";
+    }
+    Parent4.prototype.say = function () {
+      console.log("Parent4 Say Hello!");
+    }
+    function Child4() {
+      Parent4.call(this);
+      this.type = "child4";
+    }
+    Child4.prototype = Parent4.prototype; // 关键
+    console.log(new Child4);
+    // 原理：子类原型对象 直接引用 父类原型对象
+    // 缺点：子类的constructor 指向父类的构造函数。这个问题决定了子类实例 究竟是子类创造的还是父类创造的？
+
+    /**
+     * 组合继承的优化2
+     */
+     console.log("组合继承的优化2================================================")
+    function Parent5() {
+      this.name = "parent5";
+    }
+    Parent5.prototype.say = function () {
+      console.log("Parent5 Say Hello!");
+    }
+    function Child5() {
+      Parent5.call(this);
+      this.type = "child5";
+    }
+    Child5.prototype = Object.create(Parent5.prototype); // 1.将子、父类的原型对象隔离开来
+    Child5.prototype.constructor = Child5; // 2.手动添加constructor
+    console.log(new Child5);
+    // 缺点：子类的constructor可枚举
+    console.log(Object.getOwnPropertyDescriptor((new Child5).__proto__, "constructor")); // 子类的原型对象的 constructor
+    console.log(Object.getOwnPropertyDescriptor((new Child5).__proto__.__proto__, "constructor"));
+  </script>
+</body>
+
+</html>
