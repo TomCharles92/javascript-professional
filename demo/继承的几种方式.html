@@ -14,9 +14,7 @@
     function Parent1() {
       this.name = "parent1";
     }
-    Parent1.prototype.say = function () {
-      console.log("Parent1 Say Hello!");
-    }
+    Parent1.prototype.say = function () { }
     function Child1() {
       Parent1.call(this); // 实现继承的关键
       this.type = "child1";
@@ -30,6 +28,7 @@
     function Parent2() {
       this.name = "parent2";
     }
+    Parent2.prototype.say = function () { }
     function Child2() {
       this.type = "child2";
     }
@@ -43,6 +42,7 @@
     function Parent3() {
       this.name = "parent3";
     }
+    Parent3.prototype.say = function () { }
     function Child3() {
       Parent3.call(this);
       this.type = "child3";
@@ -68,7 +68,7 @@
     var child4 = new Child4();
     console.log(new Child4);
     // 原理：子类原型对象 直接引用 父类原型对象
-    // 缺点：子类的constructor 指向父类的构造函数。这个问题决定了子类实例 究竟是子类创造的还是父类创造的？
+    // 缺点：子类实例的类型的问题 child4.__proto__.constructor 显示它是 Parent4。这个问题决定了子类实例 究竟是子类创造的还是父类创造的？
 
     console.log("组合继承的优化2================================================")
     function Parent5() {
